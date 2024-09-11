@@ -4,11 +4,14 @@ training_split: null
 validation_split: null
 num_fewshot: 0
 output_type: multiple_choice
-doc_to_text: "{{question.strip()}}\nAnswer:"
+doc_to_text: "Question: {{question.strip()}}\nAnswers:\n* {{choices[0]}}\n* {{choices[1]}}\n* {{choices[2]}}\n* {{choices[3]}}\nCorrect Answer:"
 doc_to_choice: "{{choices}}"
 doc_to_target: "{{answer}}"
 metric_list:
   - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
     aggregation: mean
     higher_is_better: true
 metadata:
